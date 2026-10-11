@@ -1,0 +1,89 @@
+newmtl 355c3621-652a-4a83-bcc6-51e408da8c25
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/f4u_1d_c.jpg
+map_Ks textures/f4u_1d_n_s.jpg
+map_normal textures/f4u_1d_n.jpg
+
+newmtl fd9a44c9-9931-47fc-936e-e0100e4b956b
+Kd 0.498 0.498 0.498
+Ks 0.000 0.000 0.000
+Ns 255
+Ke 0.000 0.000 0.000
+d 0.1
+
+newmtl a00c89e0-7c71-42b6-9cca-bf1c3de15510
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/f4u_4_bomb_pylon_1_a.jpg
+map_Ks textures/f4u_4_bomb_pylon_1_n_s.jpg
+map_normal textures/f4u_4_bomb_pylon_1_n.jpg
+
+newmtl e656d5c6-98e6-455e-8316-a6913a0a9050
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/browning_m2_50_fixed_a.jpg
+map_Ks textures/browning_m2_50_fixed_n_s.jpg
+map_normal textures/browning_m2_50_fixed_n.jpg
+
+newmtl 9d1710fa-fb15-45da-a910-2465ecb5367f
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/f4u_1a_interior_c.jpg
+map_Ks textures/f4u_1a_interior_n_s.jpg
+map_normal textures/f4u_1a_interior_n.jpg
+
+newmtl df243f1c-17a2-4a8d-b6b9-d54cee3cff47
+Kd 1.000 0.000 0.000
+Ks 1.000 1.000 1.000
+Ns 255
+Ke 0.000 0.000 0.000
+d 0.1
+
+newmtl 8ce359a4-2729-4080-9f3b-3fec9b9d2abe
+Kd 0.000 1.000 0.118
+Ks 1.000 1.000 1.000
+Ns 255
+Ke 0.000 0.000 0.000
+d 0.1
+
+newmtl d3c21364-e8bb-4976-87bc-f411f4be6c1d
+Kd 0.980 0.392 0.000
+Ks 1.000 1.000 1.000
+Ns 255
+Ke 0.000 0.000 0.000
+d 0.1
+
+newmtl e2fa85d5-ab3f-454a-82f8-94d6aa97f6a1
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/f4u_1_cockpit_c.jpg
+map_Ks textures/f4u_1_cockpit_n_s.jpg
+map_normal textures/f4u_1_cockpit_n.jpg
+
+newmtl 93b7b1a1-d8f8-4915-8ea0-7a9b89b82447
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/engine_pw_r_2800_c.jpg
+map_Ks textures/engine_pw_r_2800_n_s.jpg
+map_normal textures/engine_pw_r_2800_n.jpg
+
+newmtl e401b4d7-f27d-4a12-a16d-bd2b3a362976
+Kd 0.235 0.471 1.000
+Ks 1.000 1.000 1.000
+Ns 255
+Ke 0.000 0.000 0.000
+d 0.1
+
