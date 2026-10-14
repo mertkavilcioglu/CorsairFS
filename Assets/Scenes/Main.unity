@@ -123557,6 +123557,7 @@ GameObject:
   - component: {fileID: 5413809524881038904}
   - component: {fileID: 5413809524881038903}
   - component: {fileID: 5413809524881038905}
+  - component: {fileID: 5413809524881038906}
   m_Layer: 0
   m_Name: F4U-1D  PLAYER
   m_TagString: Untagged
@@ -135215,6 +135216,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Propeller
   propeller: {fileID: 3263829589596855461}
+  targetRPM_startUp: 33
+  targetRPM_idle: 417
+  propellerAcceleration_fromCold: 33
+  propellerAcceleration_idle: 2500
 --- !u!114 &5413809524881038905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135231,6 +135236,18 @@ MonoBehaviour:
   leftFlap: {fileID: 0}
   rightAileron: {fileID: 0}
   leftAileron: {fileID: 0}
+--- !u!114 &5413809524881038906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1867814179269746656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b0f6621968ad3b4fa2dca98101220b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CanopyMovement
 --- !u!23 &5426935645509519280
 MeshRenderer:
   m_ObjectHideFlags: 0
