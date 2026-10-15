@@ -125705,6 +125705,7 @@ GameObject:
   - component: {fileID: 1194742942204409976}
   - component: {fileID: 7294731174284956737}
   - component: {fileID: 5085352867140390171}
+  - component: {fileID: 7294731174284956738}
   m_Layer: 0
   m_Name: vehicle#prop01_1_113_0
   m_TagString: Untagged
@@ -135219,7 +135220,7 @@ MonoBehaviour:
   targetRPM_startUp: 33
   targetRPM_idle: 417
   propellerAcceleration_fromCold: 33
-  propellerAcceleration_idle: 2500
+  propellerAcceleration_idle: 250
 --- !u!114 &5413809524881038905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140979,6 +140980,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2581407436042509693}
   m_Mesh: {fileID: 3747076450828073308, guid: fa55023392e5f52459a5c3a32e8e355c, type: 3}
+--- !u!114 &7294731174284956738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2581407436042509693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65b6ac4120612984a932f0efdccd1098, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SimpleSpinBlur
+  shutterSpeed: 4
+  Samples: 8
+  SSB_Material: {fileID: 2100000, guid: eb1f8abc1fa9aa043b8046a60e9ffaa9, type: 2}
+  alphaOffset: 0
+  advancedSettings:
+    enableGPUInstancing: 0
+    subMaterialIndex: 0
+    unitLocalScale: 0
+    AngularVelocityCutoff: 0
 --- !u!4 &7307907735862991285
 Transform:
   m_ObjectHideFlags: 0
