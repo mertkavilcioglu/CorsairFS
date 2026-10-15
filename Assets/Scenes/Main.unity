@@ -140992,14 +140992,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65b6ac4120612984a932f0efdccd1098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SimpleSpinBlur
-  shutterSpeed: 4
-  Samples: 8
-  SSB_Material: {fileID: 2100000, guid: eb1f8abc1fa9aa043b8046a60e9ffaa9, type: 2}
+  shutterSpeed: 10
+  Samples: 25
+  SSB_Material: {fileID: 2100000, guid: 1ac3918b48d5c1f4087ef6eda97ff6eb, type: 2}
   alphaOffset: 0
   advancedSettings:
-    enableGPUInstancing: 0
+    enableGPUInstancing: 1
     subMaterialIndex: 0
-    unitLocalScale: 0
+    unitLocalScale: 1
     AngularVelocityCutoff: 0
 --- !u!4 &7307907735862991285
 Transform:

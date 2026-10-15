@@ -6,6 +6,8 @@ public class Propeller : MonoBehaviour
     //Throttle bilgisini al, pervane dönme hızını ona göre ayarla ayrıca uçağa itkiyi de bu script içerisinde uygula
 
     [SerializeField] private Transform propeller;
+    [SerializeField] private SimpleSpinBlur propBlur;
+    [SerializeField] private MeshRenderer propMesh;
     private float timer = 0f;
     private bool isEngineOn = false;
     private bool isEngineStarting = false;
@@ -21,6 +23,8 @@ public class Propeller : MonoBehaviour
     void Start()
     {
         StartEngine();
+        propBlur.enabled = false;
+        propMesh.enabled = true;
     }
 
     void Update()
@@ -62,12 +66,21 @@ public class Propeller : MonoBehaviour
         }
         else
         {
+            if (!propBlur.enabled)
+            {
+                propBlur.enabled = true;
+            }
             targetRPM = targetRPM_idle;
             targetAcceleration = propellerAcceleration_idle;
         }
 
         currentRPM = Mathf.MoveTowards(currentRPM, targetRPM, targetAcceleration * Time.deltaTime);
         propeller.Rotate(0f, 0f, -RPMtoDegrees(currentRPM) * Time.deltaTime, Space.Self);
+
+        if (Mathf.Abs(currentRPM - targetRPM_idle) < 0.1f && propMesh.enabled)
+        {
+            propMesh.enabled = false;
+        }
 
         if (Mathf.Abs(currentRPM - targetRPM_idle) < 0.1f && timer >= 7f)
         {
