@@ -2,18 +2,23 @@ using UnityEngine;
 
 public class WingFoldControls : MonoBehaviour
 {
+    private StartUpProcedure startUpProcedure;
     [SerializeField] private Transform rightWing;
     [SerializeField] private Transform leftWing;
     [SerializeField] private float foldSpeed = 15f;
     [SerializeField] private float foldAngle = 95f;
-    private bool isFolding;
-    private bool isUnfolding;
+    public bool isFolding = false;
+    public bool isUnfolding = false;
+
+    public bool isFolded = true;
 
     private Quaternion rightWingFoldRotation;
     private Quaternion leftWingFoldRotation;
 
     void Start()
     {
+        startUpProcedure = GetComponent<StartUpProcedure>();
+
         rightWingFoldRotation = Quaternion.Euler(0f, 0f, foldAngle);
         leftWingFoldRotation = Quaternion.Euler(0f, 0f, -foldAngle);
 
@@ -24,9 +29,9 @@ public class WingFoldControls : MonoBehaviour
 
     void Update()
     {
-        if (isFolding)
+        if (isFolding && !isFolded)
             FoldWings();
-        else if (isUnfolding)
+        else if (isUnfolding && isFolded)
             UnfoldWings();
     }
 
@@ -41,6 +46,7 @@ public class WingFoldControls : MonoBehaviour
             leftWing.localRotation = leftWingFoldRotation;
 
             isFolding = false;
+            isFolded = true;
         }
     }
 
@@ -55,6 +61,8 @@ public class WingFoldControls : MonoBehaviour
             leftWing.localRotation = Quaternion.identity;
 
             isUnfolding = false;
+            isFolded = false;
+            startUpProcedure.CloseCanopy();
         }
     }
 

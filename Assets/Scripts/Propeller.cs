@@ -5,11 +5,12 @@ public class Propeller : MonoBehaviour
 
     //Throttle bilgisini al, pervane dönme hızını ona göre ayarla ayrıca uçağa itkiyi de bu script içerisinde uygula
 
+    private StartUpProcedure startUpProcedure;
     [SerializeField] private Transform propeller;
     [SerializeField] private SimpleSpinBlur propBlur;
     [SerializeField] private MeshRenderer propMesh;
     private float timer = 0f;
-    private bool isEngineOn = false;
+    public bool isEngineOn = false;
     private bool isEngineStarting = false;
 
     [SerializeField] private float targetRPM_startUp = 33f;      // 33 RPM
@@ -22,7 +23,8 @@ public class Propeller : MonoBehaviour
 
     void Start()
     {
-        StartEngine();
+        //StartEngine();
+        startUpProcedure = GetComponent<StartUpProcedure>();
         propBlur.enabled = false;
         propMesh.enabled = true;
     }
@@ -36,6 +38,7 @@ public class Propeller : MonoBehaviour
         else if (isEngineOn)
         {
             PropellerTurn();
+            startUpProcedure.UnfoldWings();
         }
     }
 
