@@ -3,21 +3,23 @@ using static UnityEngine.Rendering.HighDefinition.ProbeSettings;
 
 public class FlapControls : MonoBehaviour
 {
-    [SerializeField] private Transform rightFlapOuter;
-    [SerializeField] private Transform leftFlapOuter;
-    [SerializeField] private Transform rightFlapInner;
-    [SerializeField] private Transform leftFlapInner;
 
-    private Quaternion rightFlapOuterDeployedRotation;
-    private Quaternion leftFlapOuterDeployedRotation; 
-    private Quaternion rightFlapInnerDeployedRotation;
-    private Quaternion leftFlapInnerDeployedRotation;
+    // Right outer flap pivot located on folding part of the right wing
+    [SerializeField] private Transform rightFlapOuterPivot;
+    [SerializeField] private Transform rightFlapOuterRetractedTransform;
+    [SerializeField] private Transform rightFlapOuterDeployedTransform;
+
+
+    // Left outer flap pivot located on folding part of the left wing
+    [SerializeField] private Transform leftFlapOuterPivot;
+    [SerializeField] private Transform leftFlapOuterRetractedTransform;
+    [SerializeField] private Transform leftFlapOuterDeployedTransform;
 
 
     [SerializeField] private Transform rightAileron;
     [SerializeField] private Transform leftAileron;
 
-    [SerializeField] private float foldSpeed = 15f;
+    [SerializeField] private float foldSpeed = 10f;
     [SerializeField] private float foldAngle = 50f;
 
     private bool areFlapsDeployed = true; // Parked at the beginning, so flaps are deployed by default
@@ -26,15 +28,10 @@ public class FlapControls : MonoBehaviour
 
     void Start()
     {
-        rightFlapOuterDeployedRotation = Quaternion.Euler(0f, 0f, foldAngle);
-        rightFlapInnerDeployedRotation = Quaternion.Euler(0f, 0f, foldAngle);
-        leftFlapOuterDeployedRotation = Quaternion.Euler(0f, 0f, -foldAngle);
-        leftFlapInnerDeployedRotation = Quaternion.Euler(0f, 0f, -foldAngle);
+        rightFlapOuterPivot.rotation = rightFlapOuterDeployedTransform.rotation; // Set initial rotation to deployed position
+        leftFlapOuterPivot.rotation = leftFlapOuterDeployedTransform.rotation; // Set initial rotation to deployed position
 
-        rightFlapOuter.localRotation = rightFlapOuterDeployedRotation;
-        rightFlapInner.localRotation = rightFlapInnerDeployedRotation;
-        leftFlapOuter.localRotation = leftFlapOuterDeployedRotation;
-        leftFlapInner.localRotation = leftFlapInnerDeployedRotation;
+        //StartRetractingFlaps();
     }
 
     void Update()
@@ -49,51 +46,43 @@ public class FlapControls : MonoBehaviour
         }
     }
 
+    
     public void DeployFlaps()
     {
-        rightFlapOuter.localRotation = Quaternion.RotateTowards(rightFlapOuter.localRotation, rightFlapOuterDeployedRotation, foldSpeed * Time.deltaTime);
-        rightFlapInner.localRotation = Quaternion.RotateTowards(rightFlapInner.localRotation, rightFlapInnerDeployedRotation, foldSpeed * Time.deltaTime);
-        leftFlapOuter.localRotation = Quaternion.RotateTowards(leftFlapOuter.localRotation, leftFlapOuterDeployedRotation, foldSpeed * Time.deltaTime);
-        leftFlapInner.localRotation = Quaternion.RotateTowards(leftFlapInner.localRotation, leftFlapInnerDeployedRotation, foldSpeed * Time.deltaTime);
+        rightFlapOuterPivot.localRotation = Quaternion.RotateTowards(rightFlapOuterPivot.localRotation, rightFlapOuterDeployedTransform.localRotation, foldSpeed * Time.deltaTime);
+        leftFlapOuterPivot.localRotation = Quaternion.RotateTowards(leftFlapOuterPivot.localRotation, leftFlapOuterDeployedTransform.localRotation, foldSpeed * Time.deltaTime);
 
 
-        if (Quaternion.Angle(rightFlapOuter.localRotation, rightFlapOuterDeployedRotation) < 0.1f 
-            && Quaternion.Angle(leftFlapOuter.localRotation, leftFlapOuterDeployedRotation) < 0.1f
-            && Quaternion.Angle(rightFlapInner.localRotation, rightFlapInnerDeployedRotation) < 0.1f
-            && Quaternion.Angle(leftFlapInner.localRotation, leftFlapInnerDeployedRotation) < 0.1f)
+        if (Quaternion.Angle(rightFlapOuterPivot.localRotation, rightFlapOuterDeployedTransform.localRotation) < 0.1f 
+            && Quaternion.Angle(leftFlapOuterPivot.localRotation, leftFlapOuterDeployedTransform.localRotation) < 0.1f)
         {
-            rightFlapOuter.localRotation = rightFlapOuterDeployedRotation;
-            rightFlapInner.localRotation = rightFlapInnerDeployedRotation;
-            leftFlapOuter.localRotation = leftFlapOuterDeployedRotation;
-            leftFlapInner.localRotation = leftFlapInnerDeployedRotation;
+            rightFlapOuterPivot.localRotation = rightFlapOuterDeployedTransform.localRotation;
+            leftFlapOuterPivot.localRotation = leftFlapOuterDeployedTransform.localRotation;
 
             areFlapsDeploying = false;
             areFlapsDeployed = true;
         }
     }
 
+    
     public void RetractFlaps()
     {
-        rightFlapOuter.localRotation = Quaternion.RotateTowards(rightFlapOuter.localRotation, Quaternion.identity, foldSpeed * Time.deltaTime);
-        rightFlapInner.localRotation = Quaternion.RotateTowards(rightFlapInner.localRotation, Quaternion.identity, foldSpeed * Time.deltaTime);
-        leftFlapOuter.localRotation = Quaternion.RotateTowards(leftFlapOuter.localRotation, Quaternion.identity, foldSpeed * Time.deltaTime);
-        leftFlapInner.localRotation = Quaternion.RotateTowards(leftFlapInner.localRotation, Quaternion.identity, foldSpeed * Time.deltaTime);
+        rightFlapOuterPivot.localRotation = Quaternion.RotateTowards(rightFlapOuterPivot.localRotation, rightFlapOuterRetractedTransform.localRotation, foldSpeed * Time.deltaTime);
+        leftFlapOuterPivot.localRotation = Quaternion.RotateTowards(leftFlapOuterPivot.localRotation, leftFlapOuterRetractedTransform.localRotation, foldSpeed * Time.deltaTime);
 
 
-        if (Quaternion.Angle(rightFlapOuter.localRotation, Quaternion.identity) < 0.1f
-            && Quaternion.Angle(leftFlapOuter.localRotation, Quaternion.identity) < 0.1f
-            && Quaternion.Angle(rightFlapInner.localRotation, Quaternion.identity) < 0.1f
-            && Quaternion.Angle(leftFlapInner.localRotation, Quaternion.identity) < 0.1f)
+        if (Quaternion.Angle(rightFlapOuterPivot.localRotation, rightFlapOuterRetractedTransform.localRotation) < 0.1f
+            && Quaternion.Angle(leftFlapOuterPivot.localRotation, leftFlapOuterRetractedTransform.localRotation) < 0.1f)
         {
-            rightFlapOuter.localRotation = Quaternion.identity;
-            rightFlapInner.localRotation = Quaternion.identity;
-            leftFlapOuter.localRotation = Quaternion.identity;
-            leftFlapInner.localRotation = Quaternion.identity;
+            rightFlapOuterPivot.localRotation = rightFlapOuterRetractedTransform.localRotation;
+            leftFlapOuterPivot.localRotation = leftFlapOuterRetractedTransform.localRotation;
 
             areFlapsRetracting = false;
             areFlapsDeployed = false;
         }
     }
+
+    
 
     public void StartDeployingFlaps()
     {
