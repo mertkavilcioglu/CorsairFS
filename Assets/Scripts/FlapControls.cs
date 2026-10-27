@@ -69,6 +69,7 @@ public class FlapControls : MonoBehaviour
         // Inner
         rightFlapInnerPivot.localRotation = rightFlapInnerDeployedTransform.localRotation; // Set initial rotation to deployed position
         leftFlapInnerPivot.localRotation = leftFlapInnerDeployedTransform.localRotation; // Set initial rotation to deployed position
+
     }
 
     void Update()
@@ -98,9 +99,6 @@ public class FlapControls : MonoBehaviour
         // TODO: TÜM PIVOTLAR ICIN AYNI KONTROLU YAP. SADECE OUTER ICIN YAPILDI SIMDI.
         if (areFlapsReachedTarget(rightFlapOuterPivot, leftFlapOuterPivot, rightFlapOuterDeployedTransform, leftFlapOuterDeployedTransform))
         {
-            rightFlapOuterPivot.localRotation = rightFlapOuterDeployedTransform.localRotation;
-            leftFlapOuterPivot.localRotation = leftFlapOuterDeployedTransform.localRotation;
-
             areFlapsDeploying = false;
             areFlapsDeployed = true;
         }
@@ -121,9 +119,6 @@ public class FlapControls : MonoBehaviour
         // TODO: TÜM PIVOTLAR ICIN AYNI KONTROLU YAP. SADECE OUTER ICIN YAPILDI SIMDI.
         if (areFlapsReachedTarget(rightFlapOuterPivot, leftFlapOuterPivot, rightFlapOuterRetractedTransform, leftFlapOuterRetractedTransform))
         {
-            rightFlapOuterPivot.localRotation = rightFlapOuterRetractedTransform.localRotation;
-            leftFlapOuterPivot.localRotation = leftFlapOuterRetractedTransform.localRotation;
-
             areFlapsRetracting = false;
             areFlapsDeployed = false;
         }
@@ -155,6 +150,8 @@ public class FlapControls : MonoBehaviour
         if (Quaternion.Angle(rightPivot.localRotation, rightTarget.localRotation) < 0.1f
             && Quaternion.Angle(leftPivot.localRotation, leftTarget.localRotation) < 0.1f)
         {
+            rightPivot.localRotation = rightTarget.localRotation;
+            leftPivot.localRotation = leftTarget.localRotation;
             return true;
         }
         return false;
