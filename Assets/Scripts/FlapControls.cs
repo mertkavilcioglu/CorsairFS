@@ -94,8 +94,9 @@ public class FlapControls : MonoBehaviour
 
         // Inner
 
-        if (Quaternion.Angle(rightFlapOuterPivot.localRotation, rightFlapOuterDeployedTransform.localRotation) < 0.1f 
-            && Quaternion.Angle(leftFlapOuterPivot.localRotation, leftFlapOuterDeployedTransform.localRotation) < 0.1f)
+
+        // TODO: TÜM PIVOTLAR ICIN AYNI KONTROLU YAP. SADECE OUTER ICIN YAPILDI SIMDI.
+        if (areFlapsReachedTarget(rightFlapOuterPivot, leftFlapOuterPivot, rightFlapOuterDeployedTransform, leftFlapOuterDeployedTransform))
         {
             rightFlapOuterPivot.localRotation = rightFlapOuterDeployedTransform.localRotation;
             leftFlapOuterPivot.localRotation = leftFlapOuterDeployedTransform.localRotation;
@@ -116,8 +117,9 @@ public class FlapControls : MonoBehaviour
 
         // Inner
 
-        if (Quaternion.Angle(rightFlapOuterPivot.localRotation, rightFlapOuterRetractedTransform.localRotation) < 0.1f
-            && Quaternion.Angle(leftFlapOuterPivot.localRotation, leftFlapOuterRetractedTransform.localRotation) < 0.1f)
+
+        // TODO: TÜM PIVOTLAR ICIN AYNI KONTROLU YAP. SADECE OUTER ICIN YAPILDI SIMDI.
+        if (areFlapsReachedTarget(rightFlapOuterPivot, leftFlapOuterPivot, rightFlapOuterRetractedTransform, leftFlapOuterRetractedTransform))
         {
             rightFlapOuterPivot.localRotation = rightFlapOuterRetractedTransform.localRotation;
             leftFlapOuterPivot.localRotation = leftFlapOuterRetractedTransform.localRotation;
@@ -145,5 +147,16 @@ public class FlapControls : MonoBehaviour
             areFlapsRetracting = true;
             areFlapsDeploying = false;
         }
+    }
+
+
+    public bool areFlapsReachedTarget(Transform rightPivot, Transform leftPivot, Transform rightTarget, Transform leftTarget)
+    {
+        if (Quaternion.Angle(rightPivot.localRotation, rightTarget.localRotation) < 0.1f
+            && Quaternion.Angle(leftPivot.localRotation, leftTarget.localRotation) < 0.1f)
+        {
+            return true;
+        }
+        return false;
     }
 }
