@@ -54,8 +54,6 @@ public class FlapControls : MonoBehaviour
     private bool areFlapsDeploying = false;
     private bool areFlapsRetracting = false;
 
-    // TODO: **************** Mid ve inner kısımları da hallet ve deploy & retract fonskiyonlarının sonundaki if kontrolü içine tüm pivotlar icin kontrol koy.
-
     void Start()
     {
         // Outer
@@ -92,12 +90,16 @@ public class FlapControls : MonoBehaviour
         leftFlapOuterPivot.localRotation = Quaternion.RotateTowards(leftFlapOuterPivot.localRotation, leftFlapOuterDeployedTransform.localRotation, foldSpeed * Time.deltaTime);
 
         // Middle
+        rightFlapMiddlePivot.localRotation = Quaternion.RotateTowards(rightFlapMiddlePivot.localRotation, rightFlapMiddleDeployedTransform.localRotation, foldSpeed * Time.deltaTime);
+        leftFlapMiddlePivot.localRotation = Quaternion.RotateTowards(leftFlapMiddlePivot.localRotation, leftFlapMiddleDeployedTransform.localRotation, foldSpeed * Time.deltaTime);
 
         // Inner
+        rightFlapInnerPivot.localRotation = Quaternion.RotateTowards(rightFlapInnerPivot.localRotation, rightFlapInnerDeployedTransform.localRotation, foldSpeed * Time.deltaTime);
+        leftFlapInnerPivot.localRotation = Quaternion.RotateTowards(leftFlapInnerPivot.localRotation, leftFlapInnerDeployedTransform.localRotation, foldSpeed * Time.deltaTime);
 
-
-        // TODO: TÜM PIVOTLAR ICIN AYNI KONTROLU YAP. SADECE OUTER ICIN YAPILDI SIMDI.
-        if (areFlapsReachedTarget(rightFlapOuterPivot, leftFlapOuterPivot, rightFlapOuterDeployedTransform, leftFlapOuterDeployedTransform))
+        if (areFlapsReachedTarget(rightFlapOuterPivot, leftFlapOuterPivot, rightFlapOuterDeployedTransform, leftFlapOuterDeployedTransform) &&
+            areFlapsReachedTarget(rightFlapMiddlePivot, leftFlapMiddlePivot, rightFlapMiddleDeployedTransform, leftFlapMiddleDeployedTransform) &&
+            areFlapsReachedTarget(rightFlapInnerPivot, leftFlapInnerPivot, rightFlapInnerDeployedTransform, leftFlapInnerDeployedTransform))
         {
             areFlapsDeploying = false;
             areFlapsDeployed = true;
@@ -112,12 +114,16 @@ public class FlapControls : MonoBehaviour
         leftFlapOuterPivot.localRotation = Quaternion.RotateTowards(leftFlapOuterPivot.localRotation, leftFlapOuterRetractedTransform.localRotation, foldSpeed * Time.deltaTime);
 
         // Middle
+        rightFlapMiddlePivot.localRotation = Quaternion.RotateTowards(rightFlapMiddlePivot.localRotation, rightFlapMiddleRetractedTransform.localRotation, foldSpeed * Time.deltaTime);
+        leftFlapMiddlePivot.localRotation = Quaternion.RotateTowards(leftFlapMiddlePivot.localRotation, leftFlapMiddleRetractedTransform.localRotation, foldSpeed * Time.deltaTime);
 
         // Inner
+        rightFlapInnerPivot.localRotation = Quaternion.RotateTowards(rightFlapInnerPivot.localRotation, rightFlapInnerRetractedTransform.localRotation, foldSpeed * Time.deltaTime);
+        leftFlapInnerPivot.localRotation = Quaternion.RotateTowards(leftFlapInnerPivot.localRotation, leftFlapInnerRetractedTransform.localRotation, foldSpeed * Time.deltaTime);
 
-
-        // TODO: TÜM PIVOTLAR ICIN AYNI KONTROLU YAP. SADECE OUTER ICIN YAPILDI SIMDI.
-        if (areFlapsReachedTarget(rightFlapOuterPivot, leftFlapOuterPivot, rightFlapOuterRetractedTransform, leftFlapOuterRetractedTransform))
+        if (areFlapsReachedTarget(rightFlapOuterPivot, leftFlapOuterPivot, rightFlapOuterRetractedTransform, leftFlapOuterRetractedTransform) &&
+            areFlapsReachedTarget(rightFlapMiddlePivot, leftFlapMiddlePivot, rightFlapMiddleRetractedTransform, leftFlapMiddleRetractedTransform) &&
+            areFlapsReachedTarget(rightFlapInnerPivot, leftFlapInnerPivot, rightFlapInnerRetractedTransform, leftFlapInnerRetractedTransform))
         {
             areFlapsRetracting = false;
             areFlapsDeployed = false;
