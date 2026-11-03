@@ -123112,7 +123112,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4745734021992414133}
   m_Layer: 0
-  m_Name: CLOSED
+  m_Name: Retracted_TAIL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -126505,6 +126505,7 @@ GameObject:
   - component: {fileID: 5413809524881038903}
   - component: {fileID: 5413809524881038906}
   - component: {fileID: 5413809524881038905}
+  - component: {fileID: 5413809524881038908}
   m_Layer: 0
   m_Name: F4U-1D  PLAYER
   m_TagString: Untagged
@@ -129250,7 +129251,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6292470967073604000}
   m_Layer: 0
-  m_Name: CLOSED
+  m_Name: Retracted_RIGHT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -137637,7 +137638,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8246842659147952217}
   m_Layer: 0
-  m_Name: OPEN
+  m_Name: Deployed_TAIL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -138190,6 +138191,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da202c199fc0b7043bf657d9428d9716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StartUpProcedure
+--- !u!114 &5413809524881038908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1867814179269746656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a355ba8b4a172564e9584291c44bf13c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GearControls
+  rightGearDeployed: {fileID: 6630422038532832916}
+  rightGearRetracted: {fileID: 2738350543831604174}
+  leftGearDeployed: {fileID: 5883877339256138189}
+  leftGearRetracted: {fileID: 9117841931563184370}
+  tailGearDeployed: {fileID: 5293443540032721426}
+  tailGearRetracted: {fileID: 784787487306939822}
+  deployDuration: 5
+  retractDuration: 5
 --- !u!23 &5426935645509519280
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -139424,7 +139445,7 @@ GameObject:
   m_Component:
   - component: {fileID: 548235869080270669}
   m_Layer: 0
-  m_Name: OPEN
+  m_Name: Deployed_LEFT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -141885,7 +141906,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2788830311011138431}
   m_Layer: 0
-  m_Name: OPEN
+  m_Name: Deployed_RIGHT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -150112,7 +150133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 933028851773998624}
   m_Layer: 0
-  m_Name: CLOSED
+  m_Name: Retracted_LEFT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
